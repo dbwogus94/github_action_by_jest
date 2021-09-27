@@ -6,7 +6,7 @@ name: PR Test
 # event 감지 : push와 pr 감지
 on:
   push:
-    branches: [ master, test ]
+    branches: [ test ]
   pull_request:
     branches: [ master, test ]
 
