@@ -1,0 +1,36 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest --watchAll --runInBand --detectOpenHandles",
+    "test:coverage": "jest --collectCoverage",
+    "start": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "mysql2": "^2.3.0",
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "node-mocks-http": "^1.10.1",
+    "supertest": "^6.1.6"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 99,
+        "functions": 90,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  }
+}
