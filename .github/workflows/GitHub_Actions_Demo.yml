@@ -5,13 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     env: 
       # mysql
-      MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
-      MYSQL_USER: ${{ secrets.MYSQL_USER }}
-      MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
-      MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-      MYSQL_DIALECT: ${{ secrets.MYSQL_DIALECT }}
+      MYSQL_HOST: '${{ secrets.MYSQL_HOST }}'
+      MYSQL_USER: '${{ secrets.MYSQL_USER }}'
+      MYSQL_DATABASE: '${{ secrets.MYSQL_DATABASE }}'
+      MYSQL_PASSWORD: '${{ secrets.MYSQL_PASSWORD }}'
+      MYSQL_DIALECT: '${{ secrets.MYSQL_DIALECT }}'
       # server config
-      HOST_PORT: ${{ secrets.HOST_PORT }} 
+      HOST_PORT: '${{ secrets.HOST_PORT }}'
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
