@@ -23,7 +23,7 @@ afterAll(async () => {
   await sequelize.close();
   if (app) {
     // 서버 종료
-    server.close();
+    await server.close();
   }
 });
 
