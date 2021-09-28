@@ -31,11 +31,12 @@ jobs:
           github-token: ${{github.token}}
           script: |
             const env = process.env
-            console.log('env : ', process.env);
-            console.log('my setting data :');
-            console.log('- MYSQL_HOST ', env.MYSQL_HOST);
-            console.log('- MYSQL_USER ', env.MYSQL_USER);
-            console.log('- MYSQL_DATABASE ', env.MYSQL_DATABASE);
-            console.log('- MYSQL_PASSWORD ', env.MYSQL_PASSWORD);
-            console.log('- MYSQL_DIALECT ', env.MYSQL_DIALECT);
-            console.log('- HOST_PORT ', env.HOST_PORT);
+            if(env.MYSQL_HOST === 'localhost') {
+              console.log('확인1');
+            }
+            
+            if(env.MYSQL_DIALECT === 'mysql') {
+              console.log('확인2');
+            }
+            
+            console.log('끝!');
