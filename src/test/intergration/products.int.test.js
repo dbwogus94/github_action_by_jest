@@ -1,6 +1,6 @@
 // 네트워크 요청을 생성하는 모듈
 const request = require('supertest');
-const app = require('../../app');
+const { app, server } = require('../../app');
 const getJson = require('../../util.js');
 const { sequelize } = require('../../models');
 
@@ -15,6 +15,16 @@ const newProduct = getJson('./src/test/data/new-product.json');
 // 테스트 시작시 : autoCreateDB 호출
 beforeAll(async () => {
   await autoCreateDB();
+});
+
+// 테스트 종료시 : 서비스 종료
+afterAll(async () => {
+  // sequelize 종료
+  await sequelize.close();
+  if (app) {
+    // 서버 종료
+    server.close();
+  }
 });
 
 // #통합 테스트 정의

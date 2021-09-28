@@ -4,8 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "jest --watchAll --runInBand --detectOpenHandles",
-    "test:coverage": "jest --collectCoverage",
+    "test": "jest --runInBand --collectCoverage --detectOpenHandles",
+    "test:watch": "jest --watchAll --runInBand --detectOpenHandles",
+    "test:coverage": "jest --watchAll --collectCoverage --detectOpenHandles",
     "start": "nodemon src/app.js"
   },
   "keywords": [],

@@ -39,8 +39,8 @@ app.use((err, req, res, next) => {
 });
 
 // ## 서버 리스닝
-app.listen(host.port, () => {
+const server = app.listen(host.port, () => {
   console.info('server listen, port :', host.port);
 });
 
-module.exports = app;
+module.exports = { app, server };
