@@ -10,6 +10,7 @@ on:
   pull_request:
     branches: [ master, test ]
 
+# jobs은 실행 엑션과 엑션을 위한 설정 모음이다. jobs안에 step이 들어간다
 jobs:
   # Job ID: 문자와 -(대시), _(언더바)로 구성된 Job 고유 식별자
   Run_Jest:
@@ -18,18 +19,34 @@ jobs:
     environment: .env.test   # 사용할 secrets 스코프
     env:                     # secrets에 있는 비밀정보를 통해 환경변수 설정
       # mysql
-      MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
-      MYSQL_USER: ${{ secrets.MYSQL_USER }}
-      MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
-      MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-      MYSQL_DIALECT: ${{ secrets.MYSQL_DIALECT }}
+      MYSQL_HOST: '${{ secrets.MYSQL_HOST }}'
+      MYSQL_USER: '${{ secrets.MYSQL_USER }}'
+      MYSQL_DATABASE: '${{ secrets.MYSQL_DATABASE }}'
+      MYSQL_PASSWORD: '${{ secrets.MYSQL_PASSWORD }}'
+      MYSQL_DIALECT: '${{ secrets.MYSQL_DIALECT }}'
       # server config
       HOST_PORT: ${{ secrets.HOST_PORT }} 
     strategy:
       matrix:
-        node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+        node-version: [14.x]   
+        # 테스트 할 노드 버전, 
+        # 배열이며, 다른 버전을 추가하면 모든 버전에 대해 병렬로 테스트 진행
+        # 여러 버전을 테스트 하려면 node_modules는 케싱해서 사용해야한다.
+    # 
+    services:
+      # mysql 서비스 생성
+      mysql:
+        image: mysql:8.0.26
+        env:
+          MYSQL_DATABASE: '${{ secrets.MYSQL_DATABASE }}'
+          MYSQL_USER: '${{ secrets.MYSQL_USER }}'
+          MYSQL_PASSWORD: '${{ secrets.MYSQL_PASSWORD }}'
+          MYSQL_ROOT_PASSWORD: '${{ secrets.MYSQL_PASSWORD }}'
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    
+    # steps 해아하는 엑션 모음
     steps:
     # step 1) Step은 리포지토리를 체크아웃 하여 테스트 준비 
     - uses: actions/checkout@v2          # uses 이미 정의된 actions 사용
