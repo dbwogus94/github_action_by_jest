@@ -29,7 +29,7 @@ jobs:
         with:
           github-token: ${{github.token}}
           script: |
-            const env = "${{process.env}}"
+            const env = process.env
             console.log('my setting data :');
             console.log('- MYSQL_HOST ', env.MYSQL_HOST);
             console.log('- MYSQL_USER ', env.MYSQL_USER);
