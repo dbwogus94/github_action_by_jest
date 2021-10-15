@@ -1,62 +1,4 @@
-/*  ## it || test :  단일 테스트 */
-// it('two plus tow is foure', () => {
-//   expect(2 + 2).toBe(4);
-// });
-// test('two plus tow is foure', () => {
-//   expect(2 + 2).toBe(4);
-// });
-
-/* ## describe : 단일 테스트를 묶어서 테스트*/
-// describe('Calculation', () => {
-//   test('two plus tow is foure', () => {
-//     expect(2 + 2).toBe(4);  // 결과가 4라면 통과
-//   });
-//   test('two plus tow is foure', () => {
-//     expect(2 + 2).not.toBe(5); // 결과가 5가 아니라면 통과
-//   });
-// });
-
-/* ## expect().toBeFalsy():  false로 판별되는 값인 경우에 테스트 통과 */
-// describe('toBeFalsy function test', () => {
-//   it('false is false?', () => {
-//     expect(false).toBeFalsy();
-//   });
-//   it('0 is false?', () => {
-//     expect(0).toBeFalsy();
-//   });
-//   it('null is false?', () => {
-//     expect(null).toBeFalsy();
-//   });
-//   it('undefined is false?', () => {
-//     expect(undefined).toBeFalsy();
-//   });
-//   it('NaN is false?', () => {
-//     expect(NaN).toBeFalsy();
-//   });
-// });
-
-/* ## expect().toBeTruthy() : true로 판별되는 값인 경우 통과 */
-// describe('toBeTruthy function test', () => {
-//   it('true is true?', () => {
-//     expect(true).toBeTruthy();
-//   });
-//   it('"true" is true?', () => {
-//     expect('true').toBeTruthy();
-//   });
-//   it('"0" is true?', () => {
-//     expect('0').toBeTruthy();
-//   });
-//   it('"null" is true?', () => {
-//     expect('null').toBeTruthy();
-//   });
-//   it('"undefinde" is true?', () => {
-//     expect('undefinde').toBeTruthy();
-//   });
-// });
-
 /*  ## mock : 
-
-
 ### 코드 작성 순서
 1. 구현해야할 목록, 함수(껍데기) 생성 
 2. 통과할 단위테스트 작성
@@ -222,7 +164,7 @@ describe('Product Controller Create', () => {
   it('async function throw exception test - ver 2', async () => {
     const error = new Error('server error');
     const rejectedPromise = Promise.reject(error);
-    Product.create.mockReturnValue(rejectedPromise);
+    Product.create.mockReturnValue(rejectedPromise); // mockRejectedValue 변경하면 비동기 에러 만들 수 있음
 
     // await를 비동기로 테스트 하는 방법
     try {
