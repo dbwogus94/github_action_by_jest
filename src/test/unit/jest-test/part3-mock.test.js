@@ -164,7 +164,7 @@ describe('### mockResolvedValue VS mockRejectedValue 사용', () => {
   });
 });
 
-describe.only('mock전용 테스트 함수', () => {
+describe('mock전용 테스트 함수', () => {
   let mockfn4;
   beforeEach(() => {
     mockfn4 = jest.fn();

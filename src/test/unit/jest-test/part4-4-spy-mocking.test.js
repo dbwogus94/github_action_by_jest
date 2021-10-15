@@ -114,7 +114,7 @@ describe('## sqy mocking 테스트', () => {
   });
 });
 
-it.only('## spy mocking된 함수를 복원하여 원본으로 테스트', () => {
+it('## spy mocking된 함수를 복원하여 원본으로 테스트', () => {
   spyMock.mockReturnValue({ name: 'Mike' });
   const user1 = fn.createUser('Mike');
   expect(fn.createUser).toBeCalled();
