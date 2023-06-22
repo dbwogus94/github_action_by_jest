@@ -24,6 +24,7 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - run: echo "Nodejs verson - ${{ node -v }}"
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: log env 
         uses: actions/github-script@0.2.0
